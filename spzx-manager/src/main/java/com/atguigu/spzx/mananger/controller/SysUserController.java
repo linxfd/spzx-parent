@@ -1,5 +1,6 @@
 package com.atguigu.spzx.mananger.controller;
 
+import com.atguigu.spzx.common.log.annotation.Log;
 import com.atguigu.spzx.mananger.service.SysUserService;
 import com.atguigu.spzx.model.dto.system.AssginRoleDto;
 import com.atguigu.spzx.model.dto.system.SysUserDto;
@@ -34,6 +35,7 @@ public class SysUserController {
 
 
     @Operation(summary = "新增用户接口")
+    @Log(businessType = 1)
     @PostMapping(value = "/saveSysUser")
     public Result saveSysUser(@RequestBody SysUser sysUser) {
         sysUserService.saveSysUser(sysUser) ;
@@ -42,6 +44,7 @@ public class SysUserController {
 
 
     @Operation(summary = "修改用户接口")
+    @Log(businessType = 2)
     @PutMapping(value = "/updateSysUser")
     public Result updateSysUser(@RequestBody SysUser sysUser) {
         sysUserService.updateSysUser(sysUser) ;
@@ -49,13 +52,15 @@ public class SysUserController {
     }
 
     @Operation(summary = "删除用户接口")
+    @Log(businessType = 3)
     @DeleteMapping(value = "/deleteById/{userId}")
     public Result deleteById(@PathVariable(value = "userId") Long userId) {
         sysUserService.deleteById(userId) ;
         return Result.build(null , ResultCodeEnum.SUCCESS) ;
     }
 
-    @Operation(summary = "保存角色数据")
+    @Operation(summary = "保存用户和角色的数据")
+    @Log(businessType = 1)
     @PostMapping("/doAssign")
     public Result doAssign(@RequestBody AssginRoleDto assginRoleDto) {
         sysUserService.doAssign(assginRoleDto) ;

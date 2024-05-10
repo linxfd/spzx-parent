@@ -13,6 +13,9 @@
         <module>spzx-common</module>
         <module>spzx-manager</module>
         <module>spzx-model</module>
+        <module>spzx-server-gateway</module>
+        <module>spzx-service</module>
+        <module>spzx-service-client</module>
     </modules>
 
     <!-- 父工程-->
@@ -62,6 +65,7 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

@@ -1,5 +1,6 @@
 package com.atguigu.spzx.mananger.controller;
 
+import com.atguigu.spzx.common.log.annotation.Log;
 import com.atguigu.spzx.mananger.service.SysRoleService;
 import com.atguigu.spzx.model.dto.system.SysRoleDto;
 import com.atguigu.spzx.model.entity.system.SysRole;
@@ -44,14 +45,18 @@ public class SysRoleController {
      * @param SysRole
      * @return
      */
+
     @Operation(summary = "新增角色接口")
+    @Log(businessType = 1)
     @PostMapping(value = "/saveSysRole")
     public Result saveSysRole(@RequestBody SysRole SysRole) {
         sysRoleService.saveSysRole(SysRole) ;
         return Result.build(null , ResultCodeEnum.SUCCESS) ;
     }
 
+
     @Operation(summary = "修改角色接口")
+    @Log(businessType = 2)
     @PutMapping(value = "/updateSysRole")
     public Result updateSysRole(@RequestBody SysRole sysRole) {
         sysRoleService.updateSysRole(sysRole) ;
@@ -59,6 +64,7 @@ public class SysRoleController {
     }
 
 
+    @Log(businessType = 3)
     @Operation(summary = "删除角色接口")
     @DeleteMapping(value = "/deleteById/{roleId}")
     public Result deleteById(@PathVariable(value = "roleId") Long roleId) {

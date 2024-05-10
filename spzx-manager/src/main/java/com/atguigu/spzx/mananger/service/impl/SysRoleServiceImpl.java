@@ -1,6 +1,7 @@
 package com.atguigu.spzx.mananger.service.impl;
 
 import com.atguigu.spzx.common.exception.GuiguException;
+import com.atguigu.spzx.common.log.annotation.Log;
 import com.atguigu.spzx.mananger.mapper.SysRoleMapper;
 import com.atguigu.spzx.mananger.mapper.SysRoleUserMapper;
 import com.atguigu.spzx.mananger.service.SysRoleService;
@@ -64,8 +65,8 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Override
     public void updateSysRole(SysRole sysRole) {
         SysRole role= sysRoleMapper.queryByRoleName(sysRole.getRoleName()) ;
-        if (role != null ) {
-            throw new GuiguException(ResultCodeEnum.ROLE_NAME_IS_EXISTS);
+        if (role == null ) {
+            throw new GuiguException(ResultCodeEnum.DATA_ERROR);
         }
         sysRoleMapper.updateSysRole(sysRole) ;
     }

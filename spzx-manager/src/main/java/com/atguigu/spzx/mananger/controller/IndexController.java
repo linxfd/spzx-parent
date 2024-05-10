@@ -1,5 +1,6 @@
 package com.atguigu.spzx.mananger.controller;
 
+import com.atguigu.spzx.common.log.annotation.Log;
 import com.atguigu.spzx.mananger.service.SysMenuService;
 import com.atguigu.spzx.mananger.service.SysUserService;
 import com.atguigu.spzx.mananger.service.ValidateCodeService;
@@ -55,7 +56,8 @@ public class IndexController {
     }
 
 
-    @Operation(summary = "获取用户信息接口")
+    @Operation(summary = "用户登录，获取用户信息接口")
+    @Log(businessType = 0)
     @GetMapping(value = "/getUserInfo")
     public Result<SysUser> getUserInfo(@RequestHeader(name = "token") String token){
 //        SysUser sysUser = sysUserService.getUserInfo(token);
@@ -64,6 +66,7 @@ public class IndexController {
 
     @Operation(summary = "用户退出接口")
     @GetMapping(value = "/logout")
+    @Log(businessType = 0)
     public Result logout(@RequestHeader(value = "token") String token) {
         sysUserService.logout(token) ;
         return Result.build(null, ResultCodeEnum.SUCCESS) ;

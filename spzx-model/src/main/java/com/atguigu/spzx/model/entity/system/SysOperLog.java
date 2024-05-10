@@ -9,7 +9,6 @@ import lombok.Data;
 public class SysOperLog extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
-
 	@Schema(description = "模块标题")
 	private String title;
 

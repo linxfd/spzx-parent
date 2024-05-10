@@ -27,5 +27,4 @@ public class CategoryExcelVo {
 
 	@ExcelProperty(value = "排序" ,index = 5)
 	private Integer orderNum;
-
 }

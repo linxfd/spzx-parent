@@ -1,5 +1,6 @@
 package com.atguigu.spzx.mananger.service;
 
+import com.atguigu.spzx.common.log.annotation.Log;
 import com.atguigu.spzx.model.dto.system.SysRoleDto;
 import com.atguigu.spzx.model.entity.system.SysRole;
 import com.github.pagehelper.PageInfo;
@@ -18,6 +19,7 @@ public interface SysRoleService {
     void saveSysRole(SysRole sysRole);
 
     //修改角色
+
     void updateSysRole(SysRole sysRole);
 
     //删除角色

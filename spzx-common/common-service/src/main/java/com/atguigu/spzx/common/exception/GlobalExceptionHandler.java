@@ -2,9 +2,7 @@ package com.atguigu.spzx.common.exception;
 
 import com.atguigu.spzx.model.vo.common.Result;
 import com.atguigu.spzx.model.vo.common.ResultCodeEnum;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
