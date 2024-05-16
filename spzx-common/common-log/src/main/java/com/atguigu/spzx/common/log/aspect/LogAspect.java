@@ -27,7 +27,7 @@ public class LogAspect {            // 环绕通知切面类定义
     public Object doAroundAdvice(ProceedingJoinPoint joinPoint , Log sysLog) {
 
         // 构建前置参数
-        SysOperLog sysOperLog = new SysOperLog() ;
+        SysOperLog sysOperLog = new SysOperLog();
         // 执行业务方法前调用
         LogUtil.beforeHandleLog(sysLog , joinPoint , sysOperLog) ;
 
