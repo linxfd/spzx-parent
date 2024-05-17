@@ -2,6 +2,7 @@ package com.atguigu.spzx.cart.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.spzx.cart.service.CartService;
+
 import com.atguigu.spzx.feign.product.ProductFeignClient;
 import com.atguigu.spzx.model.entity.h5.CartInfo;
 import com.atguigu.spzx.model.entity.product.ProductSku;
@@ -151,5 +152,32 @@ public class CartServiceImpl implements CartService {
         String cartKey = this.getCartKey(userId);
         // 删除购物车
         redisTemplate.delete(cartKey);
+    }
+    @Override
+    public List<CartInfo> getAllCkecked() {
+        Long userId = AuthContextUtil.getUserInfo().getId();
+        String cartKey = this.getCartKey(userId);
+        // 获取所有购物车数据
+        List<Object> objectList = redisTemplate.opsForHash().values(cartKey);
+        if(!CollectionUtils.isEmpty(objectList)){
+            List<CartInfo> cartInfoList = objectList.stream()
+                    .map(cartInfoJSON -> JSON.parseObject(cartInfoJSON.toString(), CartInfo.class))
+                    .filter(cartInfo -> cartInfo.getIsChecked() == 1)
+                    .collect(Collectors.toList());
+            return cartInfoList ;
+        }
+        return new ArrayList<>() ;
+    }
+    @Override
+    public void deleteChecked() {
+        Long userId = AuthContextUtil.getUserInfo().getId();
+        String cartKey = getCartKey(userId);
+
+        List<Object> objectList = redisTemplate.opsForHash().values(cartKey);       // 删除选中的购物项数据
+        if(!CollectionUtils.isEmpty(objectList)) {
+            objectList.stream().map(cartInfoJSON -> JSON.parseObject(cartInfoJSON.toString(), CartInfo.class))
+                    .filter(cartInfo -> cartInfo.getIsChecked() == 1)
+                    .forEach(cartInfo -> redisTemplate.opsForHash().delete(cartKey , String.valueOf(cartInfo.getSkuId())));
+        }
     }
 }

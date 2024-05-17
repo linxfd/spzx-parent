@@ -23,4 +23,7 @@ public interface ProductSkuMapper {
 
     // 根据商品id查询商品sku信息列表
     List<ProductSku> findByProductId(Long productId);
+
+    // 根据skuId查询商品sku信息
+    void updateSale(Long skuId, Integer num);
 }

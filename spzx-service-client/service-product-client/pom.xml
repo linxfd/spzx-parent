@@ -10,7 +10,9 @@
     </parent>
 
 
+    <groupId>com.atguigu</groupId>
     <artifactId>service-product-client</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

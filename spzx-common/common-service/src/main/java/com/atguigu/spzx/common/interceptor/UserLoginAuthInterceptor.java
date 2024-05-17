@@ -24,7 +24,5 @@ public class UserLoginAuthInterceptor implements HandlerInterceptor {
         String userInfoJSON = redisTemplate.opsForValue().get("user:spzx:" + request.getHeader("token"));
         AuthContextUtil.setUserInfo(JSON.parseObject(userInfoJSON , UserInfo.class));
         return true ;
-
     }
-
 }

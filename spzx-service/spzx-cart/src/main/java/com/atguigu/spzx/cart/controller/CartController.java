@@ -66,4 +66,21 @@ public class CartController {
         cartService.clearCart();
         return Result.build(null, ResultCodeEnum.SUCCESS);
     }
+
+    /**
+     * 获取选中的购物车，
+     * 供远程调用：订单结算时使用
+     * @return
+     */
+    @Operation(summary="选中的购物车")
+    @GetMapping(value = "/auth/getAllCkecked")
+    public List<CartInfo> getAllCkecked() {
+        List<CartInfo> cartInfoList = cartService.getAllCkecked() ;
+        return cartInfoList;
+    }
+    @GetMapping(value = "/auth/deleteChecked")
+    public Result deleteChecked() {
+        cartService.deleteChecked() ;
+        return Result.build(null , ResultCodeEnum.SUCCESS) ;
+    }
 }
