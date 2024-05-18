@@ -1,12 +1,10 @@
 server:
   port: 8515
 
-
-
 spring:
   # 支付宝配置
   config:
-    import: application-alipay.yml
+    import: application-alipay.yml.bak
   application:
     name: service-pay
   cloud:

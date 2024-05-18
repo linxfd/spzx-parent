@@ -1,4 +1,3 @@
-# application-dev.yml
 server:
   port: 8513
 

@@ -1,4 +1,8 @@
 spring:
-  profiles:
-    active: dev
-
+  cloud:
+    nacos:
+      config:
+        server-addr: 8.134.237.191:8848
+  config:
+    import:
+      - nacos:service-cart-dev.yml
