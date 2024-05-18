@@ -1,3 +1,4 @@
+参考大佬的md：原地址：https://gitee.com/galie/SPZX-Backend/blob/master/README.md
 # SpringCloud 项目-尚品甄选
 
 ###### 项目运行图片
